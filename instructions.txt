@@ -30,3 +30,17 @@ SET UP Index file and package.json
 setup helmet and json, set up erro message server use and server.listen)
 3. once you get db stuff ready.. time to move on to server side! so, remember your routers, index.js file, CRUD operation endpoints, 
 
+SET UP WEB TOKEN
+
+1. npm i jsonwebtoken
+2. head over auth-router and import   const jwt = require("jsonwebtoken")
+3. on auth-router create a payload const with userId and Role in it (see example in auth router as example)
+3.5 - create a option const to add a expireIn funtionality to make token expire after certain time (see example in auth router)
+4. on the same auth router create a  token const with secret that points to your .env file and your payload,  (see it in auth router as example)
+5.send a Set-Cookie header with the value of the token = res.cookie("token", token)
+6.make sure to create an .env file and set up a secret key in there like this one JWT_SECRET = "Lets Go mets!"
+7.If you want to see the token when you login place the token const in the response (see it in auth router as example)
+7.Go to insomnia, create an user and login and you will see welcome message and token
+8. head over http://jwt.io if you want to see how your token looks like in each session by pasting your token in there -- Make sure to never add sensitive info like password because
+of this
+
