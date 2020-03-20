@@ -26,9 +26,21 @@ SET UP Index file and package.json
 
 1. make sure you npm install express helmet 
 2. make sure that in the package.json file you are including the next set ups: "server": "nodemon index.js"
-3. setup your index.js file with the basics stuff (import express, helmet
-setup helmet and json, set up erro message server use and server.listen)
 3. once you get db stuff ready.. time to move on to server side! so, remember your routers, index.js file, CRUD operation endpoints, 
+
+Get project files structure and what each file represents
+    
+0  npm install bcryptjs nodemon
+1   create a welcome folder with welcome-router.js / and folders with db name on it plus dbName-router.js and dbName-Model.js 
+1.5 create index.js file with express, helmet, welcomerouter, customized error using server use and server.listen to test your welcome enpoint using 
+npm run server to make sure basics are covered.
+3 the dbname-model.js file we will be creating re usuable funtions that will use sqlite3 syntax/ functionality to communicate with our db.
+2 the dbname-router.js file we will be creating the endpoints which will use our models
+4 create a folder named auth and file called auth-router.js where you will have endpoints login and register
+4.5 create a middleware funtion and have two files restric-middleware(to restric access if you are not logged in) and restrict role (to restric roles based on permissions, like admin)
+5 on the restric role check how it takes a parameter which is the role which is being sent from users-router in this case as an argument.  
+5.5 cgecj restric middleware and restric middleware to see how it gets created
+6. the restricted-middleware.js file you will use it to create a middleware that will restrict an user to have access to data unless they are validated
 
 SET UP WEB TOKEN
 
@@ -40,7 +52,9 @@ SET UP WEB TOKEN
 5.send a Set-Cookie header with the value of the token = res.cookie("token", token)
 6.make sure to create an .env file and set up a secret key in there like this one JWT_SECRET = "Lets Go mets!"
 7.If you want to see the token when you login place the token const in the response (see it in auth router as example)
-7.Go to insomnia, create an user and login and you will see welcome message and token
+7.5 npm i cookie-parser and the import it and use it on the INDEX.JS File
+7.6 npm i dotenv and place this code on package json "server": "nodemon -r dotenv/config index.js"
+7.8 Go to insomnia, create an user and login and you will see welcome message and token
 8. head over http://jwt.io if you want to see how your token looks like in each session by pasting your token in there -- Make sure to never add sensitive info like password because
 of this
 
